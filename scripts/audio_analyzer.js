@@ -1,3 +1,6 @@
+/* Analysis audio file inputed by user 
+ * And Generetes entities accrodingly 
+*/
 var analyser;
 audio_file.onchange = function(){
   var files = this.files;
@@ -20,24 +23,11 @@ audio_file.onchange = function(){
 
   setInterval(function() {
     if(audioSrc.context.currentTime <= audio_player.duration) {
-      // console.log("Current Length: " + length);
-      //console.log("Audio Duration: " + audio.duration);
       analyser.getByteFrequencyData(frequencyData);
-      console.log("Frequency Data: " + frequencyData);
       dataSum = frequencyData[0] + frequencyData[1];
       ECS.meteorSpeed = dataSum / 50;
-      //AVERAGES
-      // summation_array += frequencyData[0] + frequencyData[1];
-      // // length += 3;
-      // console.log("Summation Array: "+ summation_array);
-      // console.log("Data: " + data);
-      // console.log("Average at time: " + length + "s " + summation_array / data + "\n-----------------\n");
-      // length += 3;
-      console.log(audioSrc.context.currentTime);
-      console.log(audio_player.duration);
       for (var i = 0; i < (Math.random() * (15 - 5) + 5); i++) {
         ECS.Factory.FireBall();
-
       }
     }
   }, 1000)

@@ -1,8 +1,9 @@
-// Contains components that entities are able to add
-// Components should contain purely data
-// Logic that acts on these components are contained in systems
-
-// Entities that require a health value
+/* Contains components that entities are able to add
+ * Components should contain purely data
+ * Logic that acts on these components are contained in systems
+ */
+ 
+/* Entities that require health value */
 ECS.Components.Health = function(value) {
   value = value || 20;
   this.value = value;
@@ -10,7 +11,7 @@ ECS.Components.Health = function(value) {
 };
 ECS.Components.Health.prototype.name = 'health';
 
-// Entities that require movement
+/* Entities that require movement */
 ECS.Components.Position = function(x, y) {
   x = x || 0;
   y = y || 0;
@@ -20,7 +21,7 @@ ECS.Components.Position = function(x, y) {
 };
 ECS.Components.Position.prototype.name = 'position';
 
-// Entities that are drawn on screen
+/* Entities that are drawn on screen */
 ECS.Components.Sprite = function(imagePath) {
   this.data = PIXI.Sprite.fromImage(imagePath);
   return this;
@@ -35,14 +36,14 @@ ECS.Components.Player = function(imagePath) {
 };
 ECS.Components.Player.prototype.name = 'player';
 
-// Test component
+/* Test Component */
 ECS.Components.Test = function() {
   this.randomData = (Math.random() * 100000000 | 0);
 };
-// Add a destroy method to have this run on entity destruction
+
+/* Add a destroy method to have this run on entity destruction */
 ECS.Components.Test.prototype.destroy = function() {
-  console.log("Running destroy function");
-  console.log("This was the random data: " + this.randomData)
+ // console.log("Running destroy function");
+  //console.log("This was the random data: " + this.randomData)
 };
-// The name of the component
 ECS.Components.Test.prototype.name = 'test';

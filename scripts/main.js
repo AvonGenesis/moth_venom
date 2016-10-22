@@ -2,7 +2,8 @@
   var systems = [
     ECS.systems.player,
     ECS.systems.test,
-    ECS.systems.meteor
+    ECS.systems.meteor,
+	ECS.systems.collision
   ];
   var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, { backgroundColor : 0x1099bb });
   document.body.appendChild(renderer.view);
