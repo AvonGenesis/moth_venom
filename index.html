@@ -1,56 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Moth Venom</title>
-  <!--[if IE]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-  <style>
-    html {
-        overflow: hidden;
-        height: 100%;
-    }
-
-    body {
-        height: 100%;
-        overflow: auto;
-        margin: 0;
-    }
-  </style>
+ <meta charset="utf-8">
+ <title>Moth Venom</title>
+ <!--[if IE]>
+   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+ <![endif]-->
+ <style>
+   html {
+       overflow: hidden;
+       height: 100%;
+        background-color: #123243 ;
+   }
+   body {
+       height: 100%;
+       overflow: auto;
+       margin: 0;
+   }
+ </style>
 </head>
 
 <body>
-  <input id="audio_file" type="file" accept="audio/*" style="display: none"/>
-  <audio id="audio_player"></audio>
-  <a href="#" id="song-button">Pick a song</a>
-  <script src="scripts/vendor/jquery-3.1.1.min.js"></script>
-  <script src="scripts/vendor/pixi.min.js"></script>
-  <script>
-  window.ECS = {
-    meteorSpeed: 0,
-    entities: {},
-    Components: {},
-    systems: {},
-    container: new PIXI.Container()
-  };
-  </script>
-  <script src="scripts/helpers.js"></script>
-  <script src="scripts/entity.js"></script>
-  <script src="scripts/components.js"></script>
-  <script src="scripts/factory.js"></script>
-  <script src="scripts/systems/test.js"></script>
-  <script src="scripts/systems/meteor.js"></script>
-  <script src="scripts/systems/player.js"></script>
-  <script src="scripts/audio_analyzer.js"></script>
-  <script src="scripts/main.js"></script>
-  <script>
-  $(function() {
-    $("#song-button").click(function(){
-      $('#audio_file').trigger('click');
-    });
-    $("canvas").hide();
-  });
-  </script>
+ <input id="audio_file" type="file" accept="audio/*" style="display: none"/>
+ <audio id="audio_player"></audio>
+ <center>
+ <a href="#" id="song-button">
+ <img href="#" src="images/main_logo.png">
+ <img src="images/logo.png">
+ </a>
+ </center>
+ <script src="scripts/vendor/jquery-3.1.1.min.js"></script>
+ <script src="scripts/vendor/pixi.min.js"></script>
+ <script>
+ window.ECS = {
+   meteorSpeed: 0,
+   entities: {},
+   Components: {},
+   systems: {},
+   container: new PIXI.Container()
+ };
+ </script>
+ <script src="scripts/helpers.js"></script>
+ <script src="scripts/entity.js"></script>
+ <script src="scripts/components.js"></script>
+ <script src="scripts/factory.js"></script>
+ <script src="scripts/systems/test.js"></script>
+ <script src="scripts/systems/meteor.js"></script>
+ <script src="scripts/systems/player.js"></script>
+ <script src="scripts/audio_analyzer.js"></script>
+ <script src="scripts/main.js"></script>
+ <script>
+ $(function() {
+   $("#song-button").click(function(){
+     $('#audio_file').trigger('click');
+   });
+   $("canvas").hide();
+ });
+ </script>
 </body>
 </html>
