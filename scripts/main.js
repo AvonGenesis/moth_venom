@@ -1,12 +1,13 @@
 // $(function() {
   var systems = [
     ECS.systems.test,
-    ECS.systems.meteor
+    ECS.systems.meteor,
+    ECS.systems.player
   ];
-  var renderer = PIXI.autoDetectRenderer(400, 400,{backgroundColor : 0x1099bb});
+  var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, { backgroundColor : 0x1099bb });
   document.body.appendChild(renderer.view);
   //Music beat in hz i hope xdlolz
-  var musicBeat = 0.56;
+  var musicBeat = 10;
   //===================
   // create the root of the scene graph
   var stage = new PIXI.Container();
@@ -27,6 +28,8 @@
 
   var brt = new PIXI.BaseRenderTexture(300, 200, PIXI.SCALE_MODES.LINEAR, 1);
   var rt = new PIXI.RenderTexture(brt);
+
+  ECS.Factory.Player();
 
   animate();
 

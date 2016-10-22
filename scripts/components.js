@@ -27,6 +27,12 @@ ECS.Components.Sprite = function(imagePath) {
 };
 ECS.Components.Sprite.prototype.name = 'sprite';
 
+// Entities that are drawn on screen
+ECS.Components.Player = function(imagePath) {
+  this.data = PIXI.Sprite.fromImage(imagePath);
+  return this;
+};
+ECS.Components.Player.prototype.name = 'player';
 
 // Test component
 ECS.Components.Test = function() {
