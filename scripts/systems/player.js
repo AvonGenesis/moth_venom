@@ -9,14 +9,17 @@ var left = keyboard(37),
 
 //Left arrow key `press` method
 left.press = function() {
-  console.log("Left sprite");
   //Change the explorer's velocity when the key is pressed
-  spriteData.vx = -ECS.player.components.player.velocity;
+  console.log("x: " + spriteData.position.x);
+  if(spriteData.position.x > 0)
+    spriteData.vx = -ECS.player.components.player.velocity;
 };
 
 left2.press = function() {
   //Change the explorer's velocity when the key is pressed
-  spriteData.vx = -ECS.player.components.player.velocity;
+  console.log("x: " + spriteData.position.x);
+  if(spriteData.position.x > 0)
+    spriteData.vx = -ECS.player.components.player.velocity;
 };
 
 //Left arrow key `release` method
@@ -40,7 +43,9 @@ left2.release = function() {
 
 //Up
 up.press = function() {
-  spriteData.vy = -ECS.player.components.player.velocity;
+  console.log("y: " + spriteData.position.y);
+  if(spriteData.position.y > 0)
+    spriteData.vy = -ECS.player.components.player.velocity;
 };
 up.release = function() {
   if (!down.isDown) {
@@ -49,7 +54,9 @@ up.release = function() {
 };
 
 up2.press = function() {
-  spriteData.vy = -ECS.player.components.player.velocity;
+  console.log("y: " + spriteData.position.y);
+  if(spriteData.position.y > 0)
+    spriteData.vy = -ECS.player.components.player.velocity;
 };
 up2.release = function() {
   if (!down2.isDown) {
@@ -59,7 +66,8 @@ up2.release = function() {
 
 //Right
 right.press = function() {
-  spriteData.vx = ECS.player.components.player.velocity;
+  if(spriteData.position.x < window.screen.width)
+    spriteData.vx = ECS.player.components.player.velocity;
 };
 right.release = function() {
   if (!left.isDown) {
@@ -68,7 +76,8 @@ right.release = function() {
 };
 
 right2.press = function() {
-  spriteData.vx = ECS.player.components.player.velocity;
+  if(spriteData.position.x < window.screen.width)
+    spriteData.vx = ECS.player.components.player.velocity;
 };
 right2.release = function() {
   if (!left2.isDown) {
@@ -78,7 +87,9 @@ right2.release = function() {
 
 //Down
 down.press = function() {
-  spriteData.vy = ECS.player.components.player.velocity;
+  console.log("y: " + spriteData.position.y);
+  if(spriteData.position.y < window.screen.height)
+    spriteData.vy = ECS.player.components.player.velocity;
 };
 down.release = function() {
   if (!up.isDown) {
@@ -87,7 +98,9 @@ down.release = function() {
 };
 
 down2.press = function() {
-  spriteData.vy = ECS.player.components.player.velocity;
+  console.log("y: " + spriteData.position.y);
+  if(spriteData.position.y < window.screen.height)
+    spriteData.vy = ECS.player.components.player.velocity;
 };
 down2.release = function() {
   if (!up2.isDown) {
@@ -99,12 +112,19 @@ ECS.systems.player = function(x) {
   if (ECS.player == null) { return; }
   var spriteData = ECS.player.components.player.data;
 
-  // console.log("Updating player movement");
   // Update X and Y data with velocity
-  // console.log("VX: " + spriteData.vx);
-  // console.log("VY: " + spriteData.vy);
-  // console.log("X-POS: " + spriteData.position.x);
-  // console.log("Y-POS: " + spriteData.position.y);
-  spriteData.position.x += spriteData.vx;
-  spriteData.position.y += spriteData.vy;
+  if(spriteData.position.x < window.screen.width + 10 && spriteData.position.x > -14)
+    spriteData.position.x += spriteData.vx;
+  else{
+	  if((spriteData.position.x < window.screen.width && spriteData.vx > 0) || 
+	     (spriteData.position.x > window.screen.width && spriteData.vx < 0))
+		  spriteData.position.x += spriteData.vx;
+  }
+  if(spriteData.position.y < window.screen.height + 10 && spriteData.position.y > -14)
+    spriteData.position.y += spriteData.vy;
+  else{
+	  if((spriteData.position.y < window.screen.height && spriteData.vy > 0) || 
+	     (spriteData.position.y > window.screen.height && spriteData.vy < 0))
+		  spriteData.position.y += spriteData.vy;
+  }
 };
