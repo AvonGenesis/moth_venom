@@ -22,8 +22,8 @@ ECS.Factory = {
     entity.addComponent(new ECS.Components.Player('images/ship.png'));
     spriteData = entity.components.player.data;
     spriteData.anchor.set(0.5);
-    spriteData.position.x = 20;
-    spriteData.position.y = 20;
+    spriteData.position.x = window.innerWidth/2;
+    spriteData.position.y = (window.innerHeight/2) + window.innerHeight*.4;
     spriteData.vy = 0;
     spriteData.vx = 0;
     // spriteData.direction = 100;

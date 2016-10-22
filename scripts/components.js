@@ -30,6 +30,7 @@ ECS.Components.Sprite.prototype.name = 'sprite';
 // Entities that are drawn on screen
 ECS.Components.Player = function(imagePath) {
   this.data = PIXI.Sprite.fromImage(imagePath);
+  this.velocity = 5;
   return this;
 };
 ECS.Components.Player.prototype.name = 'player';
