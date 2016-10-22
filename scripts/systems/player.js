@@ -99,7 +99,7 @@ down.release = function() {
 
 down2.press = function() {
   console.log("y: " + spriteData.position.y);
-  if(spriteData.position.y < window.screen.availHeight)
+  if(spriteData.position.y < window.screen.height)
     spriteData.vy = ECS.player.components.player.velocity;
 };
 down2.release = function() {
@@ -113,8 +113,18 @@ ECS.systems.player = function(x) {
   var spriteData = ECS.player.components.player.data;
 
   // Update X and Y data with velocity
-  if(spriteData.position.x < window.screen.width + 14 && spriteData.position.x > -14)
+  if(spriteData.position.x < window.screen.width + 10 && spriteData.position.x > -14)
     spriteData.position.x += spriteData.vx;
-  if(spriteData.position.y < window.screen.height + 14 && spriteData.position.y > -14)
+  else{
+	  if((spriteData.position.x < window.screen.width && spriteData.vx > 0) || 
+	     (spriteData.position.x > window.screen.width && spriteData.vx < 0))
+		  spriteData.position.x += spriteData.vx;
+  }
+  if(spriteData.position.y < window.screen.height + 10 && spriteData.position.y > -14)
     spriteData.position.y += spriteData.vy;
+  else{
+	  if((spriteData.position.y < window.screen.height && spriteData.vy > 0) || 
+	     (spriteData.position.y > window.screen.height && spriteData.vy < 0))
+		  spriteData.position.y += spriteData.vy;
+  }
 };
