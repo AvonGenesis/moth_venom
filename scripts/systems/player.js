@@ -5,6 +5,7 @@ var left = keyboard(37),
 
 //Left arrow key `press` method
 left.press = function() {
+  console.log("Left sprite");
   //Change the explorer's velocity when the key is pressed
   spriteData.vx = -ECS.player.components.player.velocity;
 };
@@ -53,7 +54,12 @@ ECS.systems.player = function(x) {
   if (ECS.player == null) { return; }
   var spriteData = ECS.player.components.player.data;
 
+  // console.log("Updating player movement");
   // Update X and Y data with velocity
+  // console.log("VX: " + spriteData.vx);
+  // console.log("VY: " + spriteData.vy);
+  // console.log("X-POS: " + spriteData.position.x);
+  // console.log("Y-POS: " + spriteData.position.y);
   spriteData.position.x += spriteData.vx;
   spriteData.position.y += spriteData.vy;
 };

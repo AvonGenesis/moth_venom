@@ -21,10 +21,14 @@
 </head>
 
 <body>
+  <input id="audio_file" type="file" accept="audio/*" style="display: none"/>
+  <audio id="audio_player"></audio>
+  <a href="#" id="song-button">Pick a song</a>
   <script src="scripts/vendor/jquery-3.1.1.min.js"></script>
   <script src="scripts/vendor/pixi.min.js"></script>
   <script>
   window.ECS = {
+    meteorSpeed: 0,
     entities: {},
     Components: {},
     systems: {},
@@ -38,6 +42,15 @@
   <script src="scripts/systems/test.js"></script>
   <script src="scripts/systems/meteor.js"></script>
   <script src="scripts/systems/player.js"></script>
+  <script src="scripts/audio_analyzer.js"></script>
   <script src="scripts/main.js"></script>
+  <script>
+  $(function() {
+    $("#song-button").click(function(){
+      $('#audio_file').trigger('click');
+    });
+    $("canvas").hide();
+  });
+  </script>
 </body>
 </html>
