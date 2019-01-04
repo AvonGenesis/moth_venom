@@ -130,7 +130,6 @@ ECS.systems.player = function(x) {
 };
 
 function endGame(){
-	//console.log("Game over");
 	
 	window.location.href = "game_over.html";
 	
@@ -142,21 +141,15 @@ ECS.systems.collision = function(entities) {
 	
 	var playerData = ECS.player.components.player.data;
 	var playerHealth = ECS.player.components.health;
-	//var entityData = ECS.entities.meteor;
 	
-	console.log(playerHealth);
+//	console.log("Player x: " + playerData.position.x);
+	//console.log("Player y: " + playerData.position.y);
 	
-	//for(var i = 0; i < ECS.Entity.prototype._count; ++i){
-		//console.log(entityData[1]);
-	
-	console.log(playerData.health);
 	var rec1 = {x : playerData.position.x, y: playerData.position.y, width: 5, height: 5}
 	
-	/*console.log("Player 1 x-axis " + rec1.x);
-	console.log("Player 1 y-axis " + rec1.y);
-	console.log("Player 1 width " + rec1.width);
-	console.log("Player 1 height " + rec1.height + "\n------------------------\n"); */
-	//console.log("Entity info " + rec2 );
+	//console.log(rec1.x);
+	//console.log(rec1.y);
+	
 	
 	for(var entityKey in entities){
 		var entity = entities[entityKey];
@@ -164,6 +157,9 @@ ECS.systems.collision = function(entities) {
       		var meteor = entity.components.sprite.data;
 			
 			var rec2 = {x : meteor.position.x, y: meteor.position.y, width: 5 , height: 5}
+			
+			//console.log( "X:  " + (rec1.x - rec1.width) + " to " + (rec1.x + rec1.width) ) ;
+			//console.log( "Y:  " + (rec1.y - rec1.width) + " to " +  (rec1.y + rec1.width) );
 			
 			if( rec1.x < rec2.x + rec2.width && rec1.x + rec1.width > rec2.x && 
 				rec1.y < rec2.y + rec2.height && rec1.height + rec1.y > rec2.y){

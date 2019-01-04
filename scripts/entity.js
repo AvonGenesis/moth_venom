@@ -71,6 +71,6 @@ ECS.Entity.prototype.removeComponent = function removeComponent(componentName) {
 
 /* Function to print / log information about the entity */
 ECS.Entity.prototype.print = function print() {
-  console.log(JSON.stringify(this, null, 4));
+  //console.log(JSON.stringify(this, null, 4));
   return this;
 };

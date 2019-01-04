@@ -1,5 +1,5 @@
-/* Analysis audio file inputed by user 
- * And Generetes entities accrodingly 
+/* Analysis audio file inputed by user
+ * And Generetes entities accrodingly
 */
 var analyser;
 audio_file.onchange = function(){
@@ -24,11 +24,19 @@ audio_file.onchange = function(){
   setInterval(function() {
     if(audioSrc.context.currentTime <= audio_player.duration) {
       analyser.getByteFrequencyData(frequencyData);
+
+	  for(i = 0; i < frequencyData.length; ++i){
+	  	if(frequencyData[i] === 440){
+			  console.log('A4');
+	  	}
+	  }
+
       dataSum = frequencyData[0] + frequencyData[1];
       ECS.meteorSpeed = dataSum / 50;
-      for (var i = 0; i < (Math.random() * (15 - 5) + 5); i++) {
+      console.log("MEATOR SPEED:  " + ECS.meteorSpeed);
+      for (var i = 0; i < (Math.random() * 20); i++) {
         ECS.Factory.FireBall();
       }
     }
-  }, 1000)
+}, 2000)
 }
